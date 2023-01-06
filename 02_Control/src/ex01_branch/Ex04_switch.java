@@ -105,9 +105,29 @@ public class Ex04_switch {
 		
 	}
 	
+	public static void ex05() {
+		
+		int score= 480;
+		String scoreName;
+			if (score < 0 || score > 100) {
+				scoreName = "잘못된 점수";
+				System.out.println(scoreName);
+				return; // 메소드를 종료하시오.
+				}
+			switch(score / 10) {
+			case 9 : scoreName = "수"; break;
+			case 8 : scoreName = "우"; break;
+			case 7 : scoreName = "미"; break;
+			case 6 : scoreName = "양"; break;
+			default : scoreName = "가";
+			}
+			System.out.println(scoreName);
+
+	}
+	
 	public static void main(String[] args) {
 		
-		ex03();
+		ex05();
 		
 	}
 
