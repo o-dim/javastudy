@@ -28,6 +28,14 @@ public class Ex04_switch {
 		default: System.out.println("가을"); break;
 		}
 		
+	}
+	
+	public static void ex09() {
+		
+		String[] seasons = {"겨울", "봄", "여름", "가을" };
+		int month = 12;
+		
+		System.out.println(month + "월은 " + seasons[month % 12 / 3] + "이다.");
 		
 	}
 	
@@ -49,6 +57,16 @@ public class Ex04_switch {
 		}
 		
 		System.out.println(day + "일은 " + weekName + "요일이다.");
+		
+		
+	}
+	
+	public static void ex08() {
+		
+		String[] weekName = {"토", "일", "월", "화", "수", "목", "금"};
+		int day = 13;
+		System.out.println(day + "일은 " + weekName[day % weekName.length] + "요일이다.");
+			
 	}
 	
 	public static void ex03() {
@@ -127,7 +145,7 @@ public class Ex04_switch {
 	
 	public static void main(String[] args) {
 		
-		ex05();
+		ex09();
 		
 	}
 
