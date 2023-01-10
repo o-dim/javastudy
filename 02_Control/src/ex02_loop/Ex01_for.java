@@ -35,9 +35,8 @@ public class Ex01_for {
 	public static void ex04() {
 		// 2, 4, 6, 8
 		int dan = 2;
-		
-		for (int a = 1; a < 10 ; a ++) {
-			System.out.println(dan +                                                                                                                  " x " + a + " = " + a * dan);
+		for(int a = 1; a < 10 ; a ++) {
+			System.out.println(dan * a);                                                                                                                 " x " + a + " = " + a * dan);
 		}
 	}
 	
