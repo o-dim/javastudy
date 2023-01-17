@@ -2,7 +2,7 @@ package practice04_Bakery;
 
 // 빵과 잔돈
 
-public class BreadAndChange extends Bakery {
+public class BreadAndChange {
 
 	// 필드
 	private int breadCount;  // 빵의 개수
