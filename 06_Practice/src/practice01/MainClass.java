@@ -121,9 +121,19 @@ public class MainClass {
 	// 사용자로부터 비밀번호를 입력 받아서 "1234"와 같으면 "성공", "1234"가 아니면 다시 비밀번호를 입력 받도록 처리하시오.
 	// 비밀번호 입력은 최대 5번으로 제한하고, 5번의 입력이 모두 틀리면 최종적으로 "실패"를 출력하시오.
 	public static void ex06() {
-		
-	}		
-	
+		String pw = "1234";
+		Scanner sc = new Scanner(System.in);
+
+		for (int i = 0; i < 5; i ++) {
+			System.out.println("비밀번호를 입력하시오 >>> ");
+			String userPw = sc.next();
+			if(pw.equals(userPw)) {
+				System.out.println("성공");
+				break;
+			}
+		} System.out.println("실패");
+			
+	}
 	// 문제7. 구구단을 외자.
 	// 2~9단 사이의 임의의 구구단이 출력되면 정답을 입력한다.
 	// 정답을 입력해서 맞으면 "정답", 틀리면 "땡"을 출력하시오.
@@ -134,6 +144,18 @@ public class MainClass {
 	// 8x7? >>> 49
 	// 땡
 	public static void ex07() {
+		Scanner sc = new Scanner(System.in);
+		int a = (int) (Math.random() * 8) + 2;
+		int b = (int) (Math.random() * 8) + 2;
+		while(true) {
+			System.out.println(a + "x" + b + " >>> ");
+			int answer = sc.nextInt();
+			if (answer == a * b) {
+				System.out.println("정답");
+				return;
+			} System.out.println("땡");
+			return;
+		}
 		
 	}
 	
@@ -144,6 +166,7 @@ public class MainClass {
 	// 28살 여자입니다.
 	public static void ex08() {
 		
+		
 	}
 	
 	// 문제9. 다음 기준에 따라서 파일명을 변환하시오.
@@ -153,7 +176,12 @@ public class MainClass {
 	// 변환 전 파일명 >>> happy.jpg
 	// 변환 후 파일명 = happy_1658792128410.jpg
 	public static void ex09() {
-		
+		Scanner sc = new Scanner(System.in);
+		long timestamp = System.currentTimeMillis();
+
+		System.out.println("파일명을 입력하시오 (파일명.jpg) >>> ");
+		String filename = sc.next();
+		System.out.println(filename+ "_" + timestamp + ".jpg");
 	}
 	
 	// 문제10. Scanner 클래스의 next() 메소드를 이용해서 사람 이름을 입력 받은 뒤
@@ -166,11 +194,16 @@ public class MainClass {
 	// 이름 입력 >>> 유재석
 	// 처음 뵙겠습니다
 	public static void ex10() {
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("이름 입력 >>> ");
+		String friend[] = (String) sc.next();
+		
 		
 	}
 	
 	public static void main(String[] args) {
-		ex05();
+		ex10();
 	}
 
 }
