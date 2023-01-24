@@ -195,15 +195,18 @@ public class MainClass {
 	// 처음 뵙겠습니다
 	public static void ex10() {
 		Scanner sc = new Scanner(System.in);
-		
+		String[] friend = {"정우성", "한소희", "유인나" };
 		System.out.println("이름 입력 >>> ");
-		String friend[] = (String) sc.next();
-		
-		
+		String put = sc.next();
+		if(Arrays.binarySearch(friend, put) >= 0) {
+			System.out.println("반갑다 친구야");
+		} else {
+			System.out.println("처음 뵙겠습니다.");
+		}
 	}
 	
 	public static void main(String[] args) {
-		ex10();
+		ex08();
 	}
 
 }
