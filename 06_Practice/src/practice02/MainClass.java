@@ -1,5 +1,7 @@
 package practice02;
 
+import java.util.Scanner;
+
 public class MainClass {
 
 	// 문제1. 통장(balance)에 최초 5000원이 있다.
@@ -39,6 +41,24 @@ public class MainClass {
 	// 입력 >>> 4500
 	// 정답. 총 5번만에 성공.
 	public static void ex02() {
+		int num = (int)Math.random() * 10000 + 1;
+		Scanner sc = new Scanner(System.in);
+		int n = 0;
+		while(true) {
+			System.out.println("입력 >>> ");
+			int guess = sc.nextInt();
+			n ++;
+			if(guess < num) {
+				System.out.println("Up!");
+			} else if (guess > num) {
+				System.out.println("Down!");
+			} else {
+				System.out.println("정답.");
+				break;
+			}
+		}
+		System.out.println("총 " + n + "번만에 성공.");
+
 		
 	}
 	
@@ -198,7 +218,7 @@ public class MainClass {
 	}
 	
 	public static void main(String[] args) {
-		ex01();
+		ex02();
 	}
 
 }
