@@ -13,6 +13,17 @@ public class MainClass {
 	// 출금 전 18원, 5회 출금액 17원, 출금 후 1원
 	// 출금 전 1원, 6회 출금액 1원, 출금 후 0원
 	public static void ex01() {
+		int balance = 5000;
+		int withdraw = (int) Math.random() + 1;
+		int i = 0;
+		while(true) {
+			if (balance < withdraw) {
+				break;
+			}
+			i++;
+			System.out.println("출금 전 " + balance + i + "회 출금액 " + withdraw + "원, 출금 후 " + (balance - withdraw) + "원");
+		}
+		
 		
 	}
 	
@@ -187,7 +198,7 @@ public class MainClass {
 	}
 	
 	public static void main(String[] args) {
-		ex10();
+		ex01();
 	}
 
 }
