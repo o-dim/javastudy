@@ -16,16 +16,12 @@ public class MainClass {
 	// 출금 전 1원, 6회 출금액 1원, 출금 후 0원
 	public static void ex01() {
 		int balance = 5000;
-		int withdraw = (int) Math.random() + 1;
 		int i = 0;
-		while(true) {
-			if (balance < withdraw) {
-				break;
-			}
+		while(balance > 0) {
+			int withdraw = (int) (Math.random() * balance) + 1;
 			i++;
-			System.out.println("출금 전 " + balance + i + "회 출금액 " + withdraw + "원, 출금 후 " + (balance - withdraw) + "원");
+			System.out.println("출금 전 " + balance + i + "회 출금액 " + withdraw + "원, 출금 후 " + (balance -= withdraw) + "원");
 		}
-		
 		
 	}
 	
@@ -70,7 +66,16 @@ public class MainClass {
 	// "윷", "도", 5칸 이동한다.
 	// "모", "윷", "도", 10칸 이동한다.
 	public static void ex03() {
-		
+		String[] yut = {"도", "개", "걸", "윷", "모"};
+		int i = (int) Math.random() * 5 + 1;
+		String mention = "";
+		switch(i) {
+		case 0 : case 1 : case 2 : 
+			mention = yut[i] + i + "칸 이동한다.";
+		case 3: 
+			
+			
+		}
 	}
 	
 	// 문제4. 0~9 사이 난수를 100개 생성하시오.
@@ -218,7 +223,7 @@ public class MainClass {
 	}
 	
 	public static void main(String[] args) {
-		ex02();
+		ex03();
 	}
 
 }

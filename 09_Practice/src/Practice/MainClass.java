@@ -1,10 +1,13 @@
 package Practice;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalTime;
+import java.util.Scanner;
 
 public class MainClass {
 
@@ -102,8 +105,32 @@ public class MainClass {
 	
 	}
 	
+	public static void ex04() {
+		
+		//사용자로부터 입력받은 문자열을 C:\storage\diary.txt로 보내시오
+		//총 5개문장을 입력보내라
+		
+		File dir = new File("C:" + File.separator + "storage");
+		if(dir.exists() == false) {
+			dir.mkdirs();
+		}
+		
+		File diary = new File(dir, "diary.txt");
+		
+		Scanner sc = new Scanner(System.in);
+		
+		try(BufferedWriter bw = new BufferedWriter(new FileWriter(diary)) {
+			String[] input = new String[5];
+			bw.write = sc.next();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+	}
+	
 	public static void main(String[] args) throws IOException { 
-		ex02();
+		ex04();
 	}
 
 }

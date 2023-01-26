@@ -14,7 +14,7 @@ public class MainClass {
 	// Hint : 가위는 0, 바위는 1, 보는 2로 처리한다.
 	public static void ex01() {
 		int user = 0;
-		int com = ( (int)Math.random() * 3 ); // 0, 1, 2 나
+		int com = ((int)Math.random() * 3); // 0, 1, 2 나
 		Scanner sc = new Scanner(System.in);
 		System.out.println("가위(0) 바위(1) 보 (2) >>>" );
 		user = sc.nextInt();
@@ -39,13 +39,12 @@ public class MainClass {
 				case 2 : System.out.println("당신은 보, 컴퓨터는 보, 비겼습니다."); break;
 			} break;
 		}
-		
-		
 	}
-	
+
 	// 문제2. 친구 3명을 저장할 수 있는 배열을 생성하고 임의의 값으로 초기화하시오.
 	// 새로 사귄 친구의 수를 입력 받아서 기존 친구들이 저장된 배열의 길이를 새로 사귄 친구의 수만큼 늘리시오.
 	public static void ex02() {
+		/*
 		String[] fr = {"tom", "james", "nick"};
 		List<String> friend = new ArrayList<>();
 		friend.addAll(Arrays.asList(fr));
@@ -54,6 +53,21 @@ public class MainClass {
 		String newFriend = sc.next();
 		friend.add(newFriend);
 		System.out.println(friend);
+		*/
+		
+		int[] frd = {0, 1, 2};
+		Scanner sc = new Scanner(System.in);
+		System.out.println("새로사귄 친구의 수 >>> ");
+		int nfrd = sc.nextInt();
+		sc.close();
+		
+		int[] frd2 = new int[frd.length + nfrd];
+		for(int i = 0; i < frd.length; i++) {
+			frd2[i] = frd[i];
+		}
+		frd = frd2;
+		
+		System.out.println(Arrays.toString(frd2));
 		
 	}
 	
@@ -62,18 +76,15 @@ public class MainClass {
 	// 총 몇 번만에 종료되었는지 그 횟수를 마지막에 출력한다.
 	public static void ex03() {
 		int i = 0;
+		Scanner sc = new Scanner(System.in);
 		while(true) {
-			Scanner sc = new Scanner(System.in);
 			System.out.println("문자열을 입력하시오 >>> ");
 			String newWord = sc.next();
 			i ++;
-			switch(newWord) {
-			case "종료" :
-				System.out.println("프로그램을 종료합니다. 총 " + i + "회");
-				return;
-			}
-		}
-		
+			if (newWord.equals("종료")) {
+				break;
+			}	
+		} System.out.println("프로그램을 종료합니다. 총 " + i + "회");
 	}
 
 	// 문제4. 퀴즈 정답을 맞힐때까지 계속 퀴즈를 내시오.
@@ -91,10 +102,10 @@ public class MainClass {
 			switch(city) {
 			case "서울" : case "seoul" :
 				System.out.println("정답입니다.");
-				return;
+				break;
 			default :
 				System.out.println("오답입니다.");
-			} 
+			}
 			sc.close();
 		}
 		
@@ -146,7 +157,7 @@ public class MainClass {
 	public static void ex07() {
 		Scanner sc = new Scanner(System.in);
 		int a = (int) (Math.random() * 8) + 2;
-		int b = (int) (Math.random() * 8) + 2;
+		int b = (int) (Math.random() * 9) + 1;
 		while(true) {
 			System.out.println(a + "x" + b + " >>> ");
 			int answer = sc.nextInt();
@@ -156,7 +167,6 @@ public class MainClass {
 			} System.out.println("땡");
 			return;
 		}
-		
 	}
 	
 	// 문제8. 임의의 주민등록번호(personalId)를 분석하여 나이와 성별을 출력하시오.
@@ -165,7 +175,6 @@ public class MainClass {
 	// 예시)
 	// 28살 여자입니다.
 	public static void ex08() {
-		
 		
 	}
 	
@@ -206,7 +215,7 @@ public class MainClass {
 	}
 	
 	public static void main(String[] args) {
-		ex08();
+		ex02();
 	}
 
 }
