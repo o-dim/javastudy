@@ -7,7 +7,9 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 public class MainClass {
@@ -142,8 +144,65 @@ public class MainClass {
 		
 	}
 	
+	public static void ex05() {
+		// 문제5. 예외가 발생한 경우 예외 메시지와 예외 발생시간을 저장한 C:\storage\log.txt 파일을 생성하시오.
+		// 예시)
+		// 2023-01-26 12:08:30 / by zero
+		
+		try {
+			Scanner sc = new Scanner(System.in);
+			
+			
+			System.out.println("첫 번째 정수를 입력하세요 >>> ");
+			int num1 = sc.nextInt();
+			
+			System.out.println("두 번째 정수를 입력하세요 >>> ");
+			int num2 = sc.nextInt();
+			
+			
+			int add = num1 + num2;
+			int sub = num1 - num2;
+			int mul = num1 * num2;
+			int div = num1 / num2;
+			
+			System.out.println(num1 + "+" + num2 + "=" + add);
+			System.out.println(num1 + "-" + num2 + "=" + sub);
+			System.out.println(num1 + "x" + num2 + "=" + mul);
+			System.out.println(num1 + "/" + num2 + "=" + div);
+			
+		} catch(Exception e) {
+			//날짜
+			LocalDateTime now = LocalDateTime.now();
+			DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+			String dateTime = dtf.format(now);
+			
+			//예외클래스 이름
+			String ClassName = e.getClass().getName();
+			
+			//예외메세지
+			String message = e.getMessage();
+			
+			//로그파일 만들기
+			File dir = new File("C:" + File.separator + "storage");
+			if (dir.exists() == false) {
+				dir.mkdirs();
+			}
+			File file = new File(dir, "log.txt");
+			
+			try (BufferedWriter bw = new BufferedWriter(new FileWriter(file, true))){
+				bw.write(dateTime + " " + ClassName + " " + message + "\n");
+				//bw.newLine은 \n을 대신할 수 있는 코드임
+				System.out.println("예외 메세지가 log.txt 파일에 기록되었습니다.");
+			} catch (IOException e2) {
+				e2.printStackTrace();
+			} 
+		}
+		
+	}
+	
+	
 	public static void main(String[] args) throws IOException { 
-		ex04();
+		ex05();
 	}
 
 }
