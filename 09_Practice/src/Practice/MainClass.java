@@ -127,7 +127,7 @@ public class MainClass {
 
 		File diary = new File(dir, "diary.txt");
 
-		try(PrintWriter out = new PrintWriter(new FileWriter(diary))) {
+		try(PrintWriter out = new PrintWriter(diary)) {
 		
 			for(int i = 0; i < sentence.length; i++) {
 				out.println(sentence[i]);
