@@ -4,6 +4,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalTime;
@@ -115,16 +116,28 @@ public class MainClass {
 			dir.mkdirs();
 		}
 		
-		File diary = new File(dir, "diary.txt");
 		
 		Scanner sc = new Scanner(System.in);
 		
-		try(BufferedWriter bw = new BufferedWriter(new FileWriter(diary)) {
-			String[] input = new String[5];
-			bw.write = sc.next();
+		String[] sentence = new String[5];
+		System.out.println("5문장을 입력하시오");
+		for(int i = 0; i < sentence.length; i++) {
+			sentence[i] = sc.nextLine();
+		}
+
+		File diary = new File(dir, "diary.txt");
+
+		try(PrintWriter out = new PrintWriter(new FileWriter(diary))) {
+		
+			for(int i = 0; i < sentence.length; i++) {
+				out.println(sentence[i]);
+			}
+			System.out.println("diary.txt 생성 완료!");
+			
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
+		sc.close();
 		
 		
 	}
