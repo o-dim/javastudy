@@ -1,10 +1,13 @@
 package Practice;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.file.Files;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
@@ -200,9 +203,33 @@ public class MainClass {
 		
 	}
 	
+	public static void ex06() {
+		
+	
+		// 문제 6 C:\storage\diary.txt 파일을 C:diary.txt 파일로 이동하시오.
+		
+		File file1 = new File("C:" + File.separator + "storage", "diary.txt");
+		File file2 = new File("C:" + File.separator + "storage2");
+		if(file2.exists() == false) {
+			file2.mkdirs();
+		}
+		
+		try {
+			File file3 = new File(file2, "diary.txt");
+			if(file3.equals(file1)) {
+				file3 = file1;
+				file3.delete();
+			}
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
 	
 	public static void main(String[] args) throws IOException { 
-		ex05();
+		ex06();
 	}
 
 }

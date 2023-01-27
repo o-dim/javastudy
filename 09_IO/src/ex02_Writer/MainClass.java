@@ -25,7 +25,7 @@ public class MainClass {
 			int c = 'I';
 			char[] cbuf = {' ', 'a', 'm' };
 			String str = " a boy.";
-			fw.write('c'); 
+			fw.write(c); 
 			fw.write(cbuf);
 			fw.write(str);
 			
@@ -52,7 +52,7 @@ public class MainClass {
 			dir.mkdirs();
 		}
 		
-		File file = new file (dir, "ex02.txt");
+		File file = new File (dir, "ex02.txt");
 		try(FileWriter fw = new FileWriter(file)) {
 			
 			char[] cbuf = {'a', 'b', 'c', 'd', 'e'};
@@ -109,21 +109,23 @@ public class MainClass {
 	}
 	
 	public static void ex04() {
-		File dir = new File("C:" + File.separator + "storage");
 		
+		File dir = new File("C:" + File.separator + "storage");
+				
 		if(dir.exists() == false) {
 			dir.mkdirs();
 		}
 		
-		File file = new File(dir, "ex03.txt");
+		File file = new File(dir, "ex04.txt");
 		
-		try (BufferedWriter bw = new BufferedWriter(new FileWriter(file)) {
+		try (BufferedWriter bw = new BufferedWriter(new FileWriter(file))) {
 			bw.write("HelloWorld!");
 
-		} catch (IOException e) {
+		} catch(IOException e) {
 			e.printStackTrace();
 		}
 	}
+
 	
 	public static void ex05() {
 		File dir = new File("C:" + File.separator + "storage");
@@ -153,7 +155,7 @@ public class MainClass {
 	
 		
 	public static void main(String[] args) {
-	
+		ex05();
 	}
 	
 }

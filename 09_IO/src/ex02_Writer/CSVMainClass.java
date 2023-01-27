@@ -42,7 +42,7 @@ public class CSVMainClass {
 		File file = new File(dir, "product.csv");
 		try(PrintWriter out = new PrintWriter(file)){
 			for(int i = 0; i < products.size(); i++) {
-				out.println(products.get(i).get("model") + ", " + products.get(i).get("brand") + ", " + products.get(i).get("price"));
+				out.println(products.get(i).get("model") + "," + products.get(i).get("brand") + "," + products.get(i).get("price"));
 			}
 			System.out.println("product.csv가 생성되었음");
 		} catch (IOException e) {
