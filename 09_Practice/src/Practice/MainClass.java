@@ -1,19 +1,27 @@
 package Practice;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.nio.file.Files;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
+
+import com.sun.tools.jdeprscan.scan.Scan;
 
 public class MainClass {
 
@@ -207,29 +215,135 @@ public class MainClass {
 		
 	
 		// 문제 6 C:\storage\diary.txt 파일을 C:diary.txt 파일로 이동하시오.
-		
-		File file1 = new File("C:" + File.separator + "storage", "diary.txt");
-		File file2 = new File("C:" + File.separator + "storage2");
-		if(file2.exists() == false) {
-			file2.mkdirs();
+		File from = new File("C:" + File.separator + "storage", "diary.txt");		
+				
+		File toDir = new File("C:" + File.separator + "storage2");
+		if(toDir.exists() == false) {
+			toDir.mkdirs();
 		}
+		File to = new File(toDir, from.getName());
+		
+		BufferedReader br = null;
+		BufferedWriter bw = null;
 		
 		try {
-			File file3 = new File(file2, "diary.txt");
-			if(file3.equals(file1)) {
-				file3 = file1;
-				file3.delete();
+			
+			long startTime = System.currentTimeMillis();
+
+			br = new BufferedReader(new FileReader(from));
+			bw = new BufferedWriter(new FileWriter(to));
+			
+			String line = null;
+			while((line = br.readLine()) != null) {
+				bw.write(line);
+				bw.newLine();
 			}
 			
-		}catch (Exception e) {
+			bw.close();
+			br.close();
+			
+			if(from.length() == to.length()) {  // 복사 성공했다면 삭제
+				from.deleteOnExit();
+			}
+
+			long stopTime = System.currentTimeMillis();
+			
+			System.out.println("이동에 걸린 시간 : " + (stopTime - startTime) + "밀리초");
+			
+		} catch(IOException e) {
+			e.printStackTrace();
+		} 
+				
+	}
+	
+	public static void ex07() {
+		// System.in은 키보드로부터 바이트 데이터를 입력받는 inputStream이다
+		// System.in으로부터 문장 하나를 입력받아서 출력하시오
+		// Scanner 대신 BufferReader를 사용하시오
+		
+		BufferedReader br = null;
+		
+		try {
+			/*
+			
+			
+			br = new BufferedReader(new InputStreamReader(System.in));
+			System.out.println("문장입력 >>> ");
+			String line = "";
+			for (int i = 0; (line = br.readLine()) != null; i++) {
+				System.out.println(line);
+			}
+			
+			
+			 */
+			br = new BufferedReader(new InputStreamReader(System.in));
+			System.out.println("문장입력 >>> ");
+			String sentence = br.readLine();
+			
+			System.out.println("입력된 문장 : " + sentence);
+			br.close();
+			
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		
 	}
 	
+	public static void ex08() {
+		
+		File file = new File("C:" + File.separator + "storage", "ex08.txt");
+		
+		Scanner sc = new Scanner(System.in);
+		DataOutputStream dos = null;
+		
+		try {
+			dos = new DataOutputStream(new FileOutputStream(file));
+			
+			String sentence = sc.nextLine();
+			
+			dos.writeUTF(sentence);
+			
+			dos.close();
+			dos.flush();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} sc.close();
+		
+	}
+	
+	public static void ex09() {
+		// C:\GDJ61\installer\에 있는 eclipse-jee-2021-03-R-win32-x86_64.zip 파일을 C:\GDJ61\eclipse.zip 으로 복사하시오
+		File from = new File("C:" + File.separator + "GDJ61" + File.separator + "installer", "eclipse-jee-2021-03-R-win32-x86_64.zip");
+		File to = new File("C:" + File.separator + "GDJ61", "eclipse.zip");
+		
+		
+		try {
+			BufferedInputStream bis = null;
+			BufferedOutputStream bos = null;
+			
+			byte[] b = new byte[1024]; // 1024byte 씩 옮긴다 (1kb)씩
+			int readByte = 0;
+			
+			bis = new BufferedInputStream(new FileInputStream(from));
+			bos = new BufferedOutputStream(new FileOutputStream(to));
+			
+			
+			while((readByte = bis.read(b)) != -1) {
+				bos.write(b, 0, readByte);
+			} 
+			System.out.println("복사완료 되었습니다.");
+			bis.close();
+			bos.close();
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		
+	}
 	
 	public static void main(String[] args) throws IOException { 
-		ex06();
+		ex08();
 	}
 
 }
