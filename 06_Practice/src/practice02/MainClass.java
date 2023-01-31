@@ -67,15 +67,24 @@ public class MainClass {
 	// "모", "윷", "도", 10칸 이동한다.
 	public static void ex03() {
 		String[] yut = {"도", "개", "걸", "윷", "모"};
-		int i = (int) Math.random() * 5 + 1;
+		int i = (int) (Math.random() * 5) + 1;
+		int count = 0;
 		String mention = "";
-		switch(i) {
-		case 0 : case 1 : case 2 : 
-			mention = yut[i] + i + "칸 이동한다.";
-		case 3: 
-			
-			
+		while(true) {
+			if (i == 1 || i == 2 || i == 0) {
+				count += i;
+				System.out.println("\"" + yut[i] + "\", " + count + "칸 이동한다.");
+				break;
+			} else {
+				count += i;
+				System.out.println("\"" + yut[i] + "\", ");
+				continue;
+			}
 		}
+
+		
+		
+		
 	}
 	
 	// 문제4. 0~9 사이 난수를 100개 생성하시오.
