@@ -1,5 +1,7 @@
 package practice02;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class MainClass {
@@ -54,8 +56,8 @@ public class MainClass {
 			}
 		}
 		System.out.println("총 " + n + "번만에 성공.");
+		sc.close();
 
-		
 	}
 	
 	// 문제3. 자동으로 진행되는 윷 던지기를 구현하시오. 윷이나 모가 나오면 추가로 던지시오.
@@ -66,25 +68,22 @@ public class MainClass {
 	// "윷", "도", 5칸 이동한다.
 	// "모", "윷", "도", 10칸 이동한다.
 	public static void ex03() {
-		String[] yut = {"도", "개", "걸", "윷", "모"};
-		int i = (int) (Math.random() * 5) + 1;
-		int count = 0;
-		String mention = "";
+		String[] yut = {"", "도", "개", "걸", "윷", "모"};
+		int move = 0;
 		while(true) {
-			if (i == 1 || i == 2 || i == 0) {
-				count += i;
-				System.out.println("\"" + yut[i] + "\", " + count + "칸 이동한다.");
+			int num = (int)(Math.random() * 5 + 1);
+			switch(num) {
+			case 1: case 2: case 3:
+				move += num;
+				System.out.println("\"" + yut[num] + "\", " + move + "칸 이동한다.");
+				return;
+			case 4: case 5:
+				move += num;
+				System.out.print("\"" + yut[num] + "\", ");
 				break;
-			} else {
-				count += i;
-				System.out.println("\"" + yut[i] + "\", ");
-				continue;
 			}
+			// return 하면 멈춤!!
 		}
-
-		
-		
-		
 	}
 	
 	// 문제4. 0~9 사이 난수를 100개 생성하시오.
@@ -101,7 +100,21 @@ public class MainClass {
 	// 8 : ####### 7
 	// 9 : ########### 11
 	public static void ex04() {
+		int[] num = new int[100];
+		int[] count = new int[10];
 		
+		for (int i = 0; i < num.length; i++) {
+			num[i] = (int)(Math.random() * 10);
+			count[num[i]]++; // 3 3 2 count[3] count[2] count[3]
+		}
+		for (int i = 0; i < count.length; i++) {
+			StringBuilder sb = new StringBuilder();
+			for (int j = 0; j < count[i]; j++) {
+				sb.append("#");				
+			}
+			System.out.println(i + " : " + sb.toString() + " " + count[i]);
+		}
+
 	}
 	
 	// 문제5. 간단한 성적 관리 프로그램을 구현하시오.
@@ -126,6 +139,22 @@ public class MainClass {
 	// 상철 70   71   73   214	
 	// 합계 180  183  189  552	
 	public static void ex05() {
+		Scanner sc = new Scanner(System.in);
+		String[] students = {"정숙", "미희", "상철"};
+		String[] subjects = {"국어", "영어", "수학"};
+		int score = 0;
+		List<Integer> scoreBoard = new ArrayList<>();
+		for(int i = 0; i < students.length; i++) {
+			for (int j = 0; j < subjects.length; j++) {
+				System.out.println(students[i] + "의 " + subjects[j] + " 점수 >>> ");
+				score = sc.nextInt();
+				scoreBoard.add(score);
+			}
+		}
+		System.out.println("     국어 영어 수학 총점");
+		System.out.println();
+		
+		
 		
 	}
 	
