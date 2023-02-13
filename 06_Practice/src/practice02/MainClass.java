@@ -1,7 +1,10 @@
 package practice02;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Random;
 import java.util.Scanner;
 
 public class MainClass {
@@ -169,7 +172,23 @@ public class MainClass {
 	// 겨울을 영어로 하면? >>> win
 	// 오답
 	public static void ex06() {
-		
+		String[][] quiz = {
+				{"봄", "spring"},
+				{"여름", "summer"},
+				{"가을", "fall"},
+				{"겨울", "winter"}
+				
+		};
+		Scanner sc = new Scanner(System.in);
+		for (int i = 0; i < quiz.length; i++) {
+			System.out.println(quiz[i][0] + "을 영어로 하면? >>> ");
+			String ans = sc.next();
+			if(ans.equals(quiz[i][1])) {
+				System.out.println("정답입니다.");
+			} else {
+				System.out.println("오답입니다");
+			}
+		}
 	}
 	
 	// 문제7. 다음 순서에 따라서 5 x 5 형태의 숫자 빙고판을 자동으로 생성하시오.
@@ -193,6 +212,8 @@ public class MainClass {
 
 	public static void ex07() {
 		
+		
+		
 	}
 	
 	// 문제8. 대문자와 소문자와 숫자로 구성된 인증번호를 만드시오.
@@ -203,6 +224,28 @@ public class MainClass {
 	// 생성된 6자리 인증번호는 Fa013b입니다.
 	public static void ex08() {
 		
+		Scanner sc = new Scanner(System.in);
+		System.out.println("몇 자리의 인증번호를 생성할까요? >>>");
+		int ans = sc.nextInt();
+		StringBuffer sb = new StringBuffer();
+		Random random = new Random();
+		for (int i = 0; i < ans; i++) {
+			int choice = random.nextInt(3);
+			switch(choice) {
+			case 0:
+				sb.append((char)((int)random.nextInt(25)+97));
+				break;
+			case 1:
+				sb.append((char)((int)random.nextInt(25)+65));
+				break;
+			case 2:
+				sb.append((char)((int)random.nextInt(10)+48));
+				break;
+			default:
+				break;
+			}
+		}
+		System.out.println("생성된 " + ans + "자리 인증번호는 " + sb.toString() + "입니다.");
 	}
 	
 	// 문제9. 다음 지시시항에 따라 요일을 계산하는 프로그램을 구현하시오.
@@ -258,10 +301,23 @@ public class MainClass {
 	// ------------------------------
 	public static void ex10() {
 		
+		System.out.println("얼마나 구입하시겠습니까? >>>");
+		Scanner sc = new Scanner(System.in);
+		int lotto = (int)(Math.random() * 45 + 1);
+		int buy = sc.nextInt();
+		int buyCount = buy / 1000;
+		
+		for (int i = 0; i < buyCount; i++) {
+			System.out.println("0" + i + 1 + " :   " + lotto + "  " + lotto + "  " + lotto + "  " + lotto + "  " +  );
+			if(i / 5 == 0) {
+				System.out.println("------------------------------");
+			}
+		}
+		
 	}
 	
 	public static void main(String[] args) {
-		ex03();
+		ex08();
 	}
 
 }

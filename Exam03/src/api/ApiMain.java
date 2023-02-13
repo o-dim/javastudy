@@ -2,14 +2,9 @@ package api;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 public class ApiMain {
 
@@ -53,13 +48,14 @@ public class ApiMain {
 			con.disconnect();
 			System.out.println(sb.toString());
 		
-			
+			/*
 			Accident acc = new Accident( , , , );
 			File file = new File("accident.txt");
 			
 			writer = new BufferedWriter(new FileWriter(file));
 			writer.write(acc);
 			System.out.println("accident.txt가 생성되었습니다.");
+			*/
 			
 		} catch (Exception e) {
 			e.printStackTrace();
